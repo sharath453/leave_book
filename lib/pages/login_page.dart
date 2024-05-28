@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:leave_book/components/my_button.dart';
 import 'package:leave_book/components/my_textfiled.dart';
 import 'package:leave_book/homepage/home_page.dart';
+import 'package:leave_book/pages/faculty_page.dart'; // Ensure this file exists
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -19,13 +20,31 @@ class LoginPage extends StatelessWidget {
       bool isAuthenticated = true;
 
       if (isAuthenticated) {
-        // Navigate to the HomeScreen
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => HomePage(), // Navigate to HomePage
-          ),
-        );
+        if (RegExp(r'^4AL21CS\d{3}$').hasMatch(username)) {
+          // Navigate to the HomePage for students
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomePage(),
+            ),
+          );
+        } else if (RegExp(r'^CSF\d+$').hasMatch(username)) {
+          // Navigate to the FacultyPage for faculty
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => FacultyPage(),
+            ),
+          );
+        } else {
+          // Show error message indicating invalid username format
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Invalid username format.'),
+              duration: Duration(seconds: 2),
+            ),
+          );
+        }
       }
     } else {
       // Show error message indicating that both fields are required

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "28378348575",
+    "project_id": "leavebook-37f65",
+    "storage_bucket": "leavebook-37f65.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:28378348575:android:b9e7d1037cb4e299fee92a",
+        "android_client_info": {
+          "package_name": "com.example.leave_book"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtFUJcu_g6qg0WW-xB2G9yrlYJKSjvGiw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

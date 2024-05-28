@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:leave_book/components/my_button.dart'; // Assuming MyButton is a custom button widget
 
 class HomePage extends StatelessWidget {
   @override
@@ -11,112 +12,75 @@ class HomePage extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
+        title: Text('Home Page'),
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              Container(
-                width: MediaQuery.of(context)
-                    .size
-                    .width, // Make container take full width of screen
-                padding: EdgeInsets.all(20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'lib/images/alvas_college.png', // Replace with your actual image path
-                      width: double.infinity,
-                      height: 200,
-                      fit: BoxFit.cover,
-                    ),
-                    SizedBox(height: 20),
-                    Text(
-                      'Welcome to Leave App',
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: Colors.black87, // Increased font darkness
-                        fontFamily: 'Roboto', // Changed font style
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 40),
-                    HomeButton(
-                      label: 'Events',
-                      onPressed: () {
-                        // Implement onPressed logic for Events button
-                      },
-                      color: const Color(0xFFB3E5FC), // Light blue color
-                    ),
-                    SizedBox(height: 20), // Add spacing between buttons
-                    HomeButton(
-                      label: 'Attendance Details',
-                      onPressed: () {
-                        // Implement onPressed logic for Attendance Details button
-                      },
-                      color: const Color(0xFFC8E6C9), // Light green color
-                    ),
-                    SizedBox(height: 20), // Add spacing between buttons
-                    HomeButton(
-                      label: 'Gallery',
-                      onPressed: () {
-                        // Implement onPressed logic for Gallery button
-                      },
-                      color: const Color(0xFFFFF9C4), // Light yellow color
-                    ),
-                    SizedBox(height: 20), // Add spacing between buttons
-                    HomeButton(
-                      label: 'Apply for Leave',
-                      onPressed: () {
-                        // Implement onPressed logic for Apply for Leave button
-                      },
-                      color: const Color(0xFFFFCCBC), // Light orange color
-                    ),
-                  ],
-                ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 25.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const SizedBox(height: 20),
+
+            // College logo (replace with your actual image)
+            Image.asset(
+              'lib/images/alvas_college.png', // Replace with your actual image path
+              height: 200, // Adjust height to fit buttons
+              fit: BoxFit.cover,
+            ),
+
+            const SizedBox(height: 20),
+
+            // Welcome text
+            Text(
+              'Welcome to Leave App',
+              style: TextStyle(
+                fontSize: 24,
+                color: Colors.black87, // Increased font darkness
+                fontFamily: 'Roboto', // Changed font style
+                fontWeight: FontWeight.bold,
               ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+            ),
 
-class HomeButton extends StatelessWidget {
-  final String label;
-  final VoidCallback onPressed;
-  final Color color; // Button color
+            const SizedBox(height: 40),
 
-  const HomeButton({
-    required this.label,
-    required this.onPressed,
-    required this.color, // Color parameter
-  });
+            // Events button
+            MyButton(
+              onTap: () {
+                // Implement onPressed logic for Events button
+              },
+              label: 'Events',
+            ),
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity, // Make button width match parent
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: color, // Set button color
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0), // Set border radius
-          ),
-          padding: EdgeInsets.symmetric(
-              vertical: 20.0), // Increase padding for height
-        ),
-        child: Text(
-          label,
-          style: TextStyle(
-            fontSize: 20, // Increase button text size
-            color: Colors.black87, // Increased font darkness
-            fontFamily: 'Roboto', // Changed font style
-            fontWeight: FontWeight.bold,
-          ),
+            const SizedBox(height: 15),
+
+            // Attendance Details button
+            MyButton(
+              onTap: () {
+                // Implement onPressed logic for Attendance Details button
+              },
+              label: 'Attendance Details',
+            ),
+
+            const SizedBox(height: 15),
+
+            // Fine & Payments button
+            MyButton(
+              onTap: () {
+                // Implement onPressed logic for Fine & Payments button
+              },
+              label: 'Fine & Payments',
+            ),
+
+            const SizedBox(height: 15),
+
+            // Apply for Leave button
+            MyButton(
+              onTap: () {
+                // Implement onPressed logic for Apply for Leave button
+              },
+              label: 'Apply for Leave',
+            ),
+          ],
         ),
       ),
     );
