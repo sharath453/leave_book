@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leave_book/components/my_button.dart'; // Assuming MyButton is a custom button widget
+import 'package:leave_book/homepage/events_page.dart'; // Import EventsPage
 
 class HomePage extends StatelessWidget {
   @override
@@ -46,7 +47,13 @@ class HomePage extends StatelessWidget {
             // Events button
             MyButton(
               onTap: () {
-                // Implement onPressed logic for Events button
+                // Navigate to the EventsPage
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => EventsPage(),
+                  ),
+                );
               },
               label: 'Events',
             ),

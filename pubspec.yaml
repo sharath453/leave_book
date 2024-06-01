@@ -32,10 +32,15 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - lib/images/college_logo.png
-    - lib/images/google.png
-    - lib/images/apple.png
-    - lib/images/alvas_college.png
+    - lib/images/college_logo.png # College logo asset
+    - lib/images/alvas_college.png # Alvas College logo asset
+    - lib/images/vijayprakash_event.jpg # Vijay Prakash event image asset
+    - lib/images/Alvas_Virasat_award.jpg # Alvas Virasat award event image asset
+    - lib/images/republic_day.jpg # Republic Day event image asset
+    - lib/images/alvas_pragathi.png # Alvas Pragathi event image asset
+    - lib\images\alvas_virasat.jpg
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
