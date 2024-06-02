@@ -3,6 +3,8 @@ import 'package:leave_book/components/my_button.dart';
 import 'package:leave_book/components/my_textfiled.dart';
 import 'package:leave_book/homepage/home_page.dart';
 import 'package:leave_book/pages/faculty_page.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -10,41 +12,69 @@ class LoginPage extends StatelessWidget {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  void signUserIn(BuildContext context) {
+  void signUserIn(BuildContext context) async {
     String username = usernameController.text;
     String password = passwordController.text;
 
     if (username.isNotEmpty && password.isNotEmpty) {
-      // Authentication logic...
-      // For now, let's assume authentication is successful
-      bool isAuthenticated = true;
+      try {
+        final response = await http.post(
+          Uri.parse('http://192.168.171.205/database.php'),
+          headers: <String, String>{
+            'Content-Type': 'application/json',
+          },
+          body: jsonEncode(<String, String>{
+            'username': username,
+            'password': password,
+          }),
+        );
 
-      if (isAuthenticated) {
-        if (RegExp(r'^4AL21CS\d{3}$').hasMatch(username)) {
-          // Navigate to the HomePage for students
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => HomePage(),
-            ),
-          );
-        } else if (RegExp(r'^CSF\d+$').hasMatch(username)) {
-          // Navigate to the FacultyPage for faculty
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => FacultyPage(),
-            ),
-          );
+        if (response.statusCode == 200) {
+          Map<String, dynamic> data = jsonDecode(response.body);
+          String role = data['role'];
+
+          if (role == "student") {
+            // Navigate to the HomePage for students
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomePage(),
+              ),
+            );
+          } else if (role == "faculty") {
+            // Navigate to the FacultyPage for faculty
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => FacultyPage(),
+              ),
+            );
+          } else {
+            // Show error message indicating invalid role
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Invalid role.'),
+                duration: Duration(seconds: 2),
+              ),
+            );
+          }
         } else {
-          // Show error message indicating invalid username format
+          // Show error message indicating failed request
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('Invalid username format.'),
+              content: Text('Failed to sign in.'),
               duration: Duration(seconds: 2),
             ),
           );
         }
+      } catch (e) {
+        // Show error message indicating exception
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error: $e'),
+            duration: Duration(seconds: 2),
+          ),
+        );
       }
     } else {
       // Show error message indicating that both fields are required
