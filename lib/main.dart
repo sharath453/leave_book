@@ -13,6 +13,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: LoginPage(),
+      theme: ThemeData(
+        primarySwatch: Colors.blue, // You can customize your theme here
+      ),
     );
   }
 }

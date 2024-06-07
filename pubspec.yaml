@@ -17,6 +17,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^1.2.1
 
+  # Add the intl package here
+  intl: ^0.17.0
+  shared_preferences: ^2.2.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -40,8 +44,6 @@ flutter:
     - lib/images/republic_day.jpg # Republic Day event image asset
     - lib/images/alvas_pragathi.png # Alvas Pragathi event image asset
     - lib\images\alvas_virasat.jpg
-
-
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:leave_book/components/my_button.dart'; // Assuming MyButton is a custom button widget
+import 'package:leave_book/components/my_button.dart';
 
 class FacultyPage extends StatelessWidget {
   @override
@@ -24,7 +24,7 @@ class FacultyPage extends StatelessWidget {
             // College logo (replace with your actual image)
             Image.asset(
               'lib/images/college_logo.png',
-              height: 300, // Adjust height to fit buttons
+              height: 300,
             ),
 
             const SizedBox(height: 20),

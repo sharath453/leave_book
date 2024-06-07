@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:leave_book/components/my_button.dart'; // Assuming MyButton is a custom button widget
-import 'package:leave_book/homepage/events_page.dart'; // Import EventsPage
+import 'package:leave_book/components/my_button.dart';
+import 'package:leave_book/homepage/events_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -24,8 +24,8 @@ class HomePage extends StatelessWidget {
 
             // College logo (replace with your actual image)
             Image.asset(
-              'lib/images/alvas_college.png', // Replace with your actual image path
-              height: 200, // Adjust height to fit buttons
+              'lib/images/alvas_college.png',
+              height: 200,
               fit: BoxFit.cover,
             ),
 
@@ -36,8 +36,8 @@ class HomePage extends StatelessWidget {
               'Welcome to Leave App',
               style: TextStyle(
                 fontSize: 24,
-                color: Colors.black87, // Increased font darkness
-                fontFamily: 'Roboto', // Changed font style
+                color: Colors.black87,
+                fontFamily: 'Roboto',
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -92,10 +92,4 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: HomePage(),
-  ));
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leave_book/components/my_button.dart';
-import 'package:leave_book/components/my_textfiled.dart';
+import 'package:leave_book/components/my_textfield.dart';
 import 'package:leave_book/homepage/home_page.dart';
 import 'package:leave_book/pages/faculty_page.dart';
 import 'dart:convert';
