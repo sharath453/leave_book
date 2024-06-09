@@ -14,7 +14,7 @@ class FacultyPage extends StatelessWidget {
         ),
         title: Text('Faculty Page'),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 25.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -24,7 +24,7 @@ class FacultyPage extends StatelessWidget {
             // College logo (replace with your actual image)
             Image.asset(
               'lib/images/college_logo.png',
-              height: 300,
+              height: 200, // Reduced height
             ),
 
             const SizedBox(height: 20),
@@ -66,6 +66,18 @@ class FacultyPage extends StatelessWidget {
               },
               label: 'Permitted Leaves',
             ),
+
+            const SizedBox(height: 15),
+
+            // Attendance button
+            MyButton(
+              onTap: () {
+                // Handle Attendance button tap
+              },
+              label: 'Attendance',
+            ),
+
+            const SizedBox(height: 15),
           ],
         ),
       ),
