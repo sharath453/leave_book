@@ -38,7 +38,10 @@ class LoginPage extends StatelessWidget {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => HomePage(),
+                builder: (context) => HomePage(
+                  username: '',
+                  name: '',
+                ),
               ),
             );
           } else if (role == "faculty") {

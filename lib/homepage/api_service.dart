@@ -1,40 +1,28 @@
-// lib/homepage/api_service.dart
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  static const String baseUrl = 'http://localhost/leave_application/';
-
-  static Future<Map<String, dynamic>> login(
-      String username, String password) async {
+  static Future<void> submitLeaveApplication(String usn, String name,
+      String leaveFrom, String leaveTo, String reason) async {
+    final url =
+        'http://localhost/submit_leave_application.php'; // Replace this with the URL of your PHP script
     final response = await http.post(
-      Uri.parse('${baseUrl}login.php'),
+      Uri.parse(url),
       body: {
-        'username': username,
-        'password': password,
+        'USN': usn,
+        'name': name,
+        'leave_from': leaveFrom,
+        'leave_to': leaveTo,
+        'reason': reason,
       },
     );
 
     if (response.statusCode == 200) {
-      return json.decode(response.body);
+      // Leave application submitted successfully
+      return;
     } else {
-      throw Exception('Failed to log in');
-    }
-  }
-
-  static Future<Map<String, dynamic>> getLeaveFormDetails(
-      String username) async {
-    final response = await http.post(
-      Uri.parse('${baseUrl}leave_form.php'),
-      body: {
-        'username': username,
-      },
-    );
-
-    if (response.statusCode == 200) {
-      return json.decode(response.body);
-    } else {
-      throw Exception('Failed to fetch leave form details');
+      // Handle error
+      throw Exception('Failed to submit leave application');
     }
   }
 }

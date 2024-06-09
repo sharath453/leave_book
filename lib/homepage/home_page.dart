@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:leave_book/components/my_button.dart';
 import 'package:leave_book/homepage/events_page.dart';
+import 'package:leave_book/pages/leave_form_page.dart';
 
 class HomePage extends StatelessWidget {
+  final String username;
+  final String name;
+
+  HomePage({required this.username, required this.name});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +53,6 @@ class HomePage extends StatelessWidget {
             // Events button
             MyButton(
               onTap: () {
-                // Navigate to the EventsPage
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -83,7 +88,13 @@ class HomePage extends StatelessWidget {
             // Apply for Leave button
             MyButton(
               onTap: () {
-                // Implement onPressed logic for Apply for Leave button
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        LeaveFormPage(username: username, name: name),
+                  ),
+                );
               },
               label: 'Apply for Leave',
             ),
