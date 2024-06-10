@@ -32,7 +32,7 @@ class FacultyPage extends StatelessWidget {
             // Students Details button
             MyButton(
               onTap: () {
-                // Handle Students Details button tap
+                Navigator.pushNamed(context, '/studentDetails');
               },
               label: 'Students Details',
             ),
